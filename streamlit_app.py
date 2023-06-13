@@ -42,14 +42,6 @@ except URLError as e:
     streamlit.error()
 
 
-fruityvice_response = requests.get("https://fruityvice.com/api/fruit/"+ fruit_choice)
-
-
-# takes the json version of the response and normalize it
-fruityvice_normalized = pandas.json_normalize(fruityvice_response.json())
-# output it to the screen as table
-streamlit.dataframe(fruityvice_normalized)
-
 streamlit.stop()
 
 my_cnx = snowflake.connector.connect(**streamlit.secrets["snowflake"])
